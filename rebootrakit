@@ -1,0 +1,20 @@
+#!/bin/sh
+#This Script by ALKHANET (http://github.com/alkhanet26)
+
+dev=$1
+tgl=$(date)
+dc=$(httping -c 2 youtube.com | grep connected | cut -d= -f3 | grep -c ms)
+fol=$(ls /root | grep 'log_modem.txt')
+
+if [[ $dc = "2" ]]; then
+   echo -e "Connected"
+else
+   echo -e "No Internet"
+   echo 'AT+CFUN=1,1' | atinout - /dev/tty${dev} -
+   if [[ $fol = "log_modem.txt" ]]; then
+      echo -e "Reboot Modem : ${tgl}" >> /root/log_modem.txt
+   else
+      echo -e "Reboot Modem : ${tgl}" > /root/log_modem.txt && chmod +x /root/log_modem.txt
+   fi
+fi
+
