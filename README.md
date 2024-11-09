@@ -9,7 +9,7 @@ wget --no-check-certificate "https://raw.githubusercontent.com/alkhanet26/rakitr
 
 ketik di scheduletask dengan di sarankan 3 menit sekali
 ```
-*/3 * * * * sh /sbin/rebootraki XXX
+*/3 * * * * sh /sbin/rebootrakit XXX
 ```
 untuk ``XXX`` ini ganti dengan variabel device modem contoh, untuk modem LT biasanya ``dev/ttyUSB0`` jadi ``XXX`` ini ganti dengan ``USB0``
 
