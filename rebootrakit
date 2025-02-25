@@ -3,10 +3,11 @@
 
 dev=$1
 tgl=$(date)
-dc=$(httping -c 2 youtube.com | grep connected | cut -d= -f3 | grep -c ms)
+#dc=$(httping -c 2 youtube.com | grep connected | cut -d= -f3 | grep -c ms)
 fol=$(ls /root | grep 'log_modem.txt')
 
-if [[ $dc = "2" ]]; then
+#if [[ $dc = "2" ]]; then
+if curl -s 1.1.1.1 > /dev/null; then
    echo -e "Connected"
 else
    echo -e "No Internet"
